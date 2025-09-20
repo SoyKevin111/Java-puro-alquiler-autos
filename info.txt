@@ -1,0 +1,119 @@
+
+Clases
+
+Auto{
+ id,
+ marca,
+ modelo
+ precioPorDia,
+ disponibilidad,
+}
+
+Cliente{
+	id,
+	nombre,
+	apellido
+}
+
+Contrato{
+	id,
+	clienteId,
+	autoId,
+	fechaInicio,
+	fechaFin,
+	cantidadDias,
+	total
+}
+
+
+validar:
+-- no codigo duplicado
+-- no solapamiento de fecha
+-- precio != negativo
+
+
+
+metodos:
+
+- registrar autos, contratos(verifciar disponilbilidad)
+- mostrar autos y su disponibilidad
+- mostrar autos disponibles por fecha
+- mostrar todos los contratos de un cliente y calccular el total
+
+
+
+consola:
+
+
+===ALQUILER DE AUTOS===
+1. Autos
+2. Contratos
+3. Clientes
+opcion: 
+
+
+(1)
+=== AUTOS ===
+1. registrar
+2. consultar
+opcion: 
+
+(1.1)
+=== Registrar ===
+marca,
+modelo
+Elegir tipo: [1, 2];
+precio por dia: 
+
+
+(1.2)
+=== Consultar ===
+1. todos
+2. por fecha
+opcion: 
+
+=== Todos ===
+>Tipo: tipo1
+-Auto 1, marca, precio, disponibilidad = false
+-Auto 2, marca, precio, disponibilidad = true
+
+>Tipo: tipo2
+-Auto 1, marca, precio, disponibilidad = false
+-Auto 2, marca, precio, disponibilidad = true
+
+=== Por fecha ===
+inhgrese una fecha:
+
+Autos disponibles:
+[]
+
+
+(2)
+=== Contratos ===
+1. registrar
+2. consultar
+opcion: 
+
+
+(2.1)
+=== Registrar ===
+1 2 3 4 5 6 7 8 9
+10 11 12 13 14 15
+
+idAuto: 3
+Fecha inicio: 24
+Fecha final: 25
+
+Vehiculo Disponible!
+idCliente:
+precio:
+
+
+
+(2.2)
+=== Consultar ===
+
+Contratos:
+- Kevin1 ; total gastado: $100
+- Kevin2 ; total gastado: $100
+- Kevin3 ; total gastado: $100

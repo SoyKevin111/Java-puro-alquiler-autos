@@ -1,0 +1,78 @@
+📌 Descripción del Problema
+
+Una empresa de alquiler de autos necesita un sistema para gestionar su flota de vehículos, los clientes y los contratos de alquiler. El sistema debe garantizar la correcta administración de los autos, validando disponibilidad, evitando conflictos de fechas y permitiendo consultar información de manera eficiente.
+
+📌 Requerimientos del Sistema
+1. Clasificación de Autos y Contratos
+
+Cada Auto debe tener:
+
+Código único.
+
+Marca.
+
+Modelo.
+
+Tipo (sedán, SUV, camioneta, deportivo).
+
+Precio por día.
+
+Estado (disponible / alquilado).
+
+Cada Contrato de Alquiler debe tener:
+
+Código único.
+
+Cliente asociado (nombre y cédula).
+
+Auto alquilado.
+
+Fecha de inicio y fin.
+
+Cantidad de días.
+
+Precio total calculado.
+
+👉 Aplica herencia para modelar diferentes tipos de autos si lo deseas (por ejemplo: AutoSedan, AutoSUV, etc.).
+
+2. Registro de Autos y Contratos
+
+Registrar autos y contratos desde consola.
+
+Validar que:
+
+No existan códigos duplicados.
+
+No se creen contratos para autos ocupados en el rango de fechas dado.
+
+El precio no sea negativo.
+
+3. Operaciones del Sistema (Colecciones y Streams)
+
+El sistema debe permitir:
+
+a) Registrar nuevos autos y contratos (almacenados en List o Map).
+b) Listar autos por tipo y mostrar su disponibilidad.
+c) Consultar autos disponibles en un rango de fechas.
+d) Registrar un contrato de alquiler verificando disponibilidad.
+e) Listar todos los contratos de un cliente y calcular cuánto ha gastado en total.
+
+4. Manejo de Excepciones
+
+Crear excepciones personalizadas para:
+
+Código duplicado.
+
+Fechas inválidas.
+
+Autos ocupados en las fechas solicitadas.
+
+Datos inconsistentes (precio negativo, cliente vacío, etc.).
+
+5. Requisitos Adicionales
+
+Usar POO con encapsulamiento en las clases.
+
+Implementar un menú en consola que permita ejecutar todas las operaciones.
+
+Documentar las clases con comentarios.
