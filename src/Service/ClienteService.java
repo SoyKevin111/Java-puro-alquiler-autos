@@ -12,7 +12,7 @@ public class ClienteService {
 	}
 
 	public Cliente registrarCliente(Cliente cliente) {
-		return this.clienteRepository.crear(cliente);
+		return this.clienteRepository.guardar(cliente);
 	}
 
 	public Cliente obtenerClientePorId(long id) {

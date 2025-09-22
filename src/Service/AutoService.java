@@ -19,7 +19,7 @@ public class AutoService {
 	}
 
 	public Auto registrarAuto(Auto auto) {
-		return this.autoRepository.crear(auto);
+		return this.autoRepository.guardar(auto);
 	}
 
 	public List<Auto> obtenerAutoPorTipo(String tipo) {
@@ -45,7 +45,7 @@ public class AutoService {
 		AutoService s = new AutoService(new AutoRepository(), new ContratoRepository());
 		s.obtenerAutoPorTipo("SUV")
 				.stream()
-				.forEach(a -> System.out.println(a));
+				.forEach(a -> System.out.println(a + " tipo: " + a.getTipo()));
 		;
 	}
 

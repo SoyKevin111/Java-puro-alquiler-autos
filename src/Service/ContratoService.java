@@ -19,7 +19,7 @@ public class ContratoService {
 	}
 
 	public Contrato registrarContrato(Contrato contrato) {
-		return this.contratoRepository.crear(contrato);
+		return this.contratoRepository.guardar(contrato);
 	}
 
 	public boolean validarAutoDisponible(long id, LocalDate fInicio, LocalDate fFinal) {

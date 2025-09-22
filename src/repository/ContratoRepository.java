@@ -2,9 +2,6 @@ package repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
 import model.Auto;
 import model.Contrato;
@@ -12,10 +9,9 @@ import model.autos.Coupe;
 import model.autos.Minivan;
 import model.autos.Suv;
 
-public class ContratoRepository {
+public class ContratoRepository extends AbstractRepository<Contrato> {
 
-	private final Set<Contrato> contratos = new HashSet<>();
-	private long nextId = 1;
+	private long nextId = 5;
 
 	public ContratoRepository() {
 
@@ -31,38 +27,29 @@ public class ContratoRepository {
 		c1.setTotal(new BigDecimal("100.40"));
 
 		Contrato c2 = new Contrato(null, a2, LocalDate.of(2025, 9, 19), LocalDate.of(2025, 9, 21));
-		c1.setCantidadDias(2);
-		c1.setTotal(new BigDecimal("100.40"));
+		c2.setCantidadDias(2);
+		c2.setTotal(new BigDecimal("100.40"));
 
 		Contrato c3 = new Contrato(null, a3, LocalDate.of(2025, 9, 21), LocalDate.of(2025, 9, 23));
-		c1.setCantidadDias(2);
-		c1.setTotal(new BigDecimal("100.40"));
+		c3.setCantidadDias(2);
+		c3.setTotal(new BigDecimal("100.40"));
 
 		Contrato c4 = new Contrato(null, a2, LocalDate.of(2025, 9, 24), LocalDate.of(2025, 9, 26));
-		c1.setCantidadDias(2);
-		c1.setTotal(new BigDecimal("100.40"));
+		c4.setCantidadDias(2);
+		c4.setTotal(new BigDecimal("100.40"));
 
-		contratos.add(c1);
-		contratos.add(c2);
-		contratos.add(c3);
-		contratos.add(c4);
+		storage.put(1L, c1);
+		storage.put(2L, c2);
+		storage.put(3L, c3);
+		storage.put(4L, c4);
 
 	}
 
-	public Contrato crear(Contrato contrato) {
-		contrato.setId(nextId++);
-		contratos.add(contrato);
-		return contrato;
-	}
-
-	public Set<Contrato> todos() {
-		return this.contratos;
-	}
-
-	public Optional<Contrato> porId(Long id) {
-		return this.contratos.stream()
-				.filter(a -> a.getId().equals(id))
-				.findFirst();
+	@Override
+	public Contrato guardar(Contrato entity) {
+		entity.setId(nextId++);
+		storage.put(entity.getId(), entity);
+		return entity;
 	}
 
 }

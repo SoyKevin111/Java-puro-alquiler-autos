@@ -1,19 +1,15 @@
 package repository;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
 import model.Auto;
 import model.autos.Coupe;
 import model.autos.Minivan;
 import model.autos.Suv;
 
-public class AutoRepository {
+public class AutoRepository extends AbstractRepository<Auto> {
 
-	private final Set<Auto> autos = new HashSet<>();
-	private long nextId = 1;
+	private long nextId = 4;
 
 	public AutoRepository() {
 
@@ -24,26 +20,17 @@ public class AutoRepository {
 		Auto a3 = new Suv("auto3", "modelo3", new BigDecimal("25.4"));
 		a3.setId(3l);
 
-		this.autos.add(a1);
-		this.autos.add(a2);
-		this.autos.add(a3);
+		storage.put(1l, a1);
+		storage.put(2l, a2);
+		storage.put(3l, a3);
 
 	}
 
-	public Auto crear(Auto auto) {
-		auto.setId(nextId++);
-		autos.add(auto);
-		return auto;
-	}
-
-	public Set<Auto> todos() {
-		return this.autos;
-	}
-
-	public Optional<Auto> porId(Long id) {
-		return this.autos.stream()
-				.filter(a -> a.getId().equals(id))
-				.findFirst();
+	@Override
+	public Auto guardar(Auto entity) {
+		entity.setId(nextId++);
+		storage.put(entity.getId(), entity);
+		return entity;
 	}
 
 }

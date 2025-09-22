@@ -1,30 +1,16 @@
 package repository;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
 import model.Cliente;
 
-public class ClienteRepository {
+public class ClienteRepository extends AbstractRepository<Cliente> {
 
-	private final Set<Cliente> clientes = new HashSet<>();
 	private long nextId = 1;
 
-	public Cliente crear(Cliente cliente) {
-		cliente.setId(nextId++);
-		clientes.add(cliente);
-		return cliente;
-	}
-
-	public Set<Cliente> todos() {
-		return this.clientes;
-	}
-
-	public Optional<Cliente> porId(Long id) {
-		return this.clientes.stream()
-				.filter(c -> c.getId().equals(id))
-				.findFirst();
+	@Override
+	public Cliente guardar(Cliente entity) {
+		entity.setId(nextId++);
+		storage.put(entity.getId(), entity);
+		return entity;
 	}
 
 }
