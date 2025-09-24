@@ -2,44 +2,34 @@ package validations;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class GeneralValidation {
 
 	private Scanner sc = new Scanner(System.in);
 
-	public int validarInt(String valor) {
+	public <T> T validar(String valor, Function<String, T> parser, String errorMsg) {
 		while (true) {
 			try {
-				return Integer.parseInt(valor);
-			} catch (NumberFormatException e) {
-				System.out.print("Error, ingrese un número entero: ");
+				return parser.apply(valor);
+			} catch (Exception e) {
+				System.out.print(errorMsg + ": ");
 				valor = sc.nextLine().trim();
 			}
 		}
+	}
+
+	public int validarInt(String valor) {
+		return validar(valor, Integer::parseInt, "Error, ingrese un número entero");
 	}
 
 	public double validarDouble(String valor) {
-		while (true) {
-			try {
-				return Double.parseDouble(valor);
-			} catch (NumberFormatException e) {
-				System.out.println("Error: ingrese un numero decimal: ");
-				valor = sc.nextLine().trim();
-			}
-		}
+		return validar(valor, Double::parseDouble, "Error, ingrese un número decimal");
 	}
 
 	public LocalDate validarLocalDate(String valor) {
-		while (true) {
-			System.out.println("yyyy-MM-dd): ");
-			try {
-				return LocalDate.parse(valor, DateTimeFormatter.ISO_LOCAL_DATE);
-			} catch (DateTimeParseException e) {
-				System.out.println("Error (yyyy-MM-dd): ingrese una fecha: ");
-				valor = sc.nextLine().trim();
-			}
-		}
+		return validar(valor, v -> LocalDate.parse(v, DateTimeFormatter.ISO_LOCAL_DATE),
+				"Error, ingrese una fecha en formato yyyy-MM-dd");
 	}
 }
