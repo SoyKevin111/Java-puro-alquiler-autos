@@ -31,7 +31,7 @@ public class AlquilerAutosAplicacion {
 		ClienteService cls = new ClienteService(crp);
 
 		AutoConsola ac = new AutoConsola(sc, asv, gu, gv);
-		ClienteConsola clc = new ClienteConsola();
+		ClienteConsola clc = new ClienteConsola(sc, cls);
 		ContratoConsola coc = new ContratoConsola(sc, gu, cts, cls, gv);
 
 		PrincipalConsola pc = new PrincipalConsola(sc, ac, clc, coc);
