@@ -85,7 +85,8 @@ public class AutoConsola {
 
 	public void consultarPorFecha() {
 		while (true) {
-			LocalDate dia = this.generalUtils.obtenerCalendario();
+			this.generalUtils.mostrarCalendario();
+			LocalDate dia = this.generalUtils.obtenerFecha();
 			System.out.println("Autos Disponibles: ");
 			try {
 				this.autoService.obtenerAutosDisponiblesPorFecha(dia).forEach(a -> System.out.printf("%s%n", a.toString()));

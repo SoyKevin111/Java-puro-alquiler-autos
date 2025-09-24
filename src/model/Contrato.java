@@ -35,6 +35,10 @@ public class Contrato {
 
 	}
 
+	public void calcularTotal() {
+		this.setTotal(this.getAuto().getPrecioPorDia().multiply(new BigDecimal(this.getCantidadDias())));
+	}
+
 	public Long getId() {
 		return id;
 	}

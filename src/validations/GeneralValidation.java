@@ -37,6 +37,10 @@ public class GeneralValidation {
 		return validar(valor, BigDecimal::new, "Error, ingrese un número decimal");
 	}
 
+	public Long validarLong(String valor) {
+		return validar(valor, Long::parseLong, "Error, ingrese un ID");
+	}
+
 	public LocalDate validarLocalDate(String valor) {
 		return validar(valor, v -> LocalDate.parse(v, DateTimeFormatter.ISO_LOCAL_DATE),
 				"Error, ingrese una fecha en formato yyyy-MM-dd");

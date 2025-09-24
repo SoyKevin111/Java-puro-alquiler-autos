@@ -15,7 +15,7 @@ public class GeneralUtils {
 		this.generalValidation = generalValidation;
 	}
 
-	public LocalDate obtenerCalendario() {
+	public void mostrarCalendario() {
 		LocalDate hoy = LocalDate.now();
 		int ultimoDia = hoy.lengthOfMonth();
 
@@ -24,6 +24,11 @@ public class GeneralUtils {
 			System.out.printf("%d ", i);
 		}
 		System.out.println();
+	}
+
+	public LocalDate obtenerFecha() {
+		LocalDate hoy = LocalDate.now();
+		int ultimoDia = hoy.lengthOfMonth();
 		while (true) {
 			System.out.println("Seleccione un dia: ");
 			int dia = this.generalValidation.validarInt(sc.nextLine());
@@ -32,11 +37,10 @@ public class GeneralUtils {
 			}
 			System.out.printf("Rango disponible [%d - %d]%n", hoy.getDayOfMonth(), ultimoDia);
 		}
-
 	}
 
 	public static void main(String[] args) {
 		GeneralUtils gu = new GeneralUtils(new Scanner(System.in), new GeneralValidation(new Scanner(System.in)));
-		gu.obtenerCalendario();
+		gu.mostrarCalendario();
 	}
 }

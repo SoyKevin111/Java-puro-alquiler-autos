@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import exceptions.AutoNoDisponibleException;
 import exceptions.ContratosNoEncontradosException;
+import model.Auto;
 import model.Contrato;
 import repository.AutoRepository;
 import repository.ContratoRepository;
@@ -21,21 +22,27 @@ public class ContratoService {
 	}
 
 	public Contrato registrarContrato(Contrato contrato) {
+		int totalDias = 0;
+		for (int i = contrato.getFechaInicio().getDayOfMonth(); i < contrato.getFechaSalida().getDayOfMonth(); i++) {
+			totalDias++;
+		}
+		contrato.setCantidadDias(totalDias);
+		contrato.calcularTotal();
 		contrato.validar();
 		return this.contratoRepository.guardar(contrato);
 	}
 
-	public void validarAutoDisponible(long id, LocalDate fInicio, LocalDate fFinal) {
+	public Auto validarAutoDisponible(long autoId, LocalDate fInicio, LocalDate fFinal) {
 		boolean disponible = this.contratoRepository.todos()
 				.stream()
-				.filter(c -> c.getAuto().getId().equals(id))
+				.filter(c -> c.getAuto().getId().equals(autoId))
 				.anyMatch(c -> fInicio.isBefore(c.getFechaSalida()) && fFinal.isAfter(c.getFechaInicio()))
 						? false // no disponible
 						: true; // disponible
 		if (!disponible) {
-			new AutoNoDisponibleException("Auto no disponible para la fecha.");
+			throw new AutoNoDisponibleException("Auto no disponible para la fecha.");
 		}
-		System.out.println("Disponible!");
+		return this.autoRepository.porId(autoId).get();
 	}
 
 	public List<Contrato> obtenerContratos() {
@@ -43,7 +50,7 @@ public class ContratoService {
 				.stream()
 				.collect(Collectors.toList()); // set to list
 
-		contratos.forEach(System.out::println);
+		// contratos.forEach(System.out::println);
 		if (contratos.isEmpty())
 			new ContratosNoEncontradosException("Contratos no encontrados");
 		return contratos;
