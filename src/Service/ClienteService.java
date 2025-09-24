@@ -1,5 +1,6 @@
 package Service;
 
+import exceptions.ClienteNoEncontradoException;
 import model.Cliente;
 import repository.ClienteRepository;
 
@@ -12,11 +13,13 @@ public class ClienteService {
 	}
 
 	public Cliente registrarCliente(Cliente cliente) {
+		cliente.validar();
 		return this.clienteRepository.guardar(cliente);
 	}
 
 	public Cliente obtenerClientePorId(long id) {
-		return this.clienteRepository.porId(id).orElseThrow(() -> new RuntimeException("Error, cliente no encontrado."));
+		return this.clienteRepository.porId(id)
+				.orElseThrow(() -> new ClienteNoEncontradoException("Cliente no encontrado con id: " + id));
 	}
 
 }

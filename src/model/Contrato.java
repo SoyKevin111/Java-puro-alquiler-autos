@@ -23,6 +23,18 @@ public class Contrato {
 	public Contrato() {
 	}
 
+	public void validar() {
+		if (this.getCliente() == null)
+			throw new IllegalArgumentException("Cliente no disponible");
+		if (this.getAuto() == null)
+			throw new IllegalArgumentException("Auto no disponible");
+		if (this.getFechaInicio() == null)
+			throw new IllegalArgumentException("Fecha entrada no disponible");
+		if (this.getFechaSalida() == null)
+			throw new IllegalArgumentException("Fecha salida no disponible");
+
+	}
+
 	public Long getId() {
 		return id;
 	}

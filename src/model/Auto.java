@@ -16,6 +16,15 @@ public class Auto {
 		this.precioPorDia = precioPorDia;
 	}
 
+	public void validar() {
+		if (marca == null || marca.isBlank())
+			throw new IllegalArgumentException("Marca inválida");
+		if (modelo == null || modelo.isBlank())
+			throw new IllegalArgumentException("Modelo inválido");
+		if (precioPorDia == null)
+			throw new IllegalArgumentException("Precio inválido");
+	}
+
 	public Long getId() {
 		return id;
 	}

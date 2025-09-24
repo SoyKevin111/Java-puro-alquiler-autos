@@ -14,6 +14,13 @@ public class Cliente {
 	public Cliente() {
 	}
 
+	public void validar() {
+		if (nombre == null || nombre.isBlank())
+			throw new IllegalArgumentException("Nombre inválido");
+		if (apellido == null || apellido.isBlank())
+			throw new IllegalArgumentException("Apellido inválido");
+	}
+
 	public Long getId() {
 		return id;
 	}
