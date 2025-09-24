@@ -1,0 +1,38 @@
+
+OPERACIONES BASICAS CON DIFERENTES TIPOS DE DATOS.
+
+1. int
+int a = 5, b = 2;
+int suma = a + b;       // 7
+int resta = a - b;      // 3
+int mult = a * b;       // 10
+int div = a / b;        // 2
+int mod = a % b;        // 1
+
+2. float / double / Double
+double x = 5.0, y = 2.0;
+double suma = x + y;    // 7.0
+double div = x / y;     // 2.5
+double mult = x * y;    // 10.0
+
+Double z = Double.valueOf(3.5); // objeto Double
+
+
+Usando Math:
+
+Math.sqrt(16);     // 4.0
+Math.pow(2, 3);    // 8.0
+Math.round(2.7);   // 3
+Math.floor(2.7);   // 2
+Math.ceil(2.3);    // 3
+
+3. BigDecimal (precisión alta, no usar + - * / directo)
+import java.math.BigDecimal;
+
+BigDecimal a = new BigDecimal("5.5");
+BigDecimal b = new BigDecimal("2.0");
+
+BigDecimal suma = a.add(b);        // 7.5
+BigDecimal resta = a.subtract(b);  // 3.5
+BigDecimal mult = a.multiply(b);   // 11.0
+BigDecimal div = a.divide(b, 2, BigDecimal.ROUND_HALF_UP); // 2.75
