@@ -10,6 +10,9 @@ public class Minivan extends Auto {
 		super(marca, modelo, precioPorDia);
 	}
 
+	public Minivan() {
+	}
+
 	@Override
 	public String getTipo() {
 		return "MINIVAN";

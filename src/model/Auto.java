@@ -16,6 +16,10 @@ public class Auto {
 		this.precioPorDia = precioPorDia;
 	}
 
+	public Auto() {
+
+	}
+
 	public void validar() {
 		if (marca == null || marca.isBlank())
 			throw new IllegalArgumentException("Marca inválida");

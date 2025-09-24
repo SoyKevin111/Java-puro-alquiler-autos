@@ -34,6 +34,7 @@ public class PrincipalConsola {
 			System.out.print("opcion: ");
 
 			int op = sc.nextInt();
+			sc.nextLine();
 			if (op == opciones.size() + 1)
 				return;
 			if (op >= 1 && op <= acciones.length)
@@ -62,13 +63,13 @@ public class PrincipalConsola {
 		AutoRepository arp = new AutoRepository();
 		ContratoRepository ctcp = new ContratoRepository();
 
-		GeneralValidation gv = new GeneralValidation();
+		GeneralValidation gv = new GeneralValidation(sc);
 
 		GeneralUtils gu = new GeneralUtils(sc, gv);
 
 		AutoService asv = new AutoService(arp, ctcp);
 
-		AutoConsola ac = new AutoConsola(sc, asv, gu);
+		AutoConsola ac = new AutoConsola(sc, asv, gu, gv);
 		ClienteConsola clc = new ClienteConsola();
 		ContratoConsola coc = new ContratoConsola();
 

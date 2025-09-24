@@ -10,6 +10,9 @@ public class Suv extends Auto {
 		super(marca, modelo, precioPorDia);
 	}
 
+	public Suv() {
+	}
+
 	@Override
 	public String getTipo() {
 		return "SUV";

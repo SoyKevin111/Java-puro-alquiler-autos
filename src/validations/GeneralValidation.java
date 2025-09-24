@@ -1,5 +1,6 @@
 package validations;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -7,7 +8,11 @@ import java.util.function.Function;
 
 public class GeneralValidation {
 
-	private Scanner sc = new Scanner(System.in);
+	private Scanner sc;
+
+	public GeneralValidation(Scanner sc) {
+		this.sc = sc;
+	}
 
 	public <T> T validar(String valor, Function<String, T> parser, String errorMsg) {
 		while (true) {
@@ -24,8 +29,12 @@ public class GeneralValidation {
 		return validar(valor, Integer::parseInt, "Error, ingrese un número entero");
 	}
 
-	public double validarDouble(String valor) {
-		return validar(valor, Double::parseDouble, "Error, ingrese un número decimal");
+	public Double validarDouble(String valor) {
+		return validar(valor, Double::parseDouble, "Error, ingrese un número decimal o entero");
+	}
+
+	public BigDecimal validarBigDecimal(String valor) {
+		return validar(valor, BigDecimal::new, "Error, ingrese un número decimal");
 	}
 
 	public LocalDate validarLocalDate(String valor) {

@@ -10,6 +10,9 @@ public class Coupe extends Auto {
 		super(marca, modelo, precioPorDia);
 	}
 
+	public Coupe() {
+	}
+
 	@Override
 	public String getTipo() {
 		return "COUPE";

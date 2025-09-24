@@ -36,7 +36,7 @@ public class GeneralUtils {
 	}
 
 	public static void main(String[] args) {
-		GeneralUtils gu = new GeneralUtils(new Scanner(System.in), new GeneralValidation());
+		GeneralUtils gu = new GeneralUtils(new Scanner(System.in), new GeneralValidation(new Scanner(System.in)));
 		gu.obtenerCalendario();
 	}
 }
